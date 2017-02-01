@@ -21,6 +21,11 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
 
     connect( ui->pushButton_3, SIGNAL(clicked(bool)), this, SLOT(NuevaBlack()));
 
+    connect(ui->pushButton_5, SIGNAL(clicked(bool)), this, SLOT(AntImagen()));
+
+
+    connect(ui->pushButton_4, SIGNAL(clicked(bool)), this, SLOT(SigImagen()));
+
 
     ui->lineEdit->setText("512");
     ui->lineEdit_2->setText("512");
@@ -103,8 +108,10 @@ int VentanaPrincipal::NuevaBlack(){
             nm->setPixel(j,i, c->rgb());
         }
     }
-
+    this->imagenSalida = new QList<QImage*>;
+    this->imagenSalida->append(nm);
     nm->save("/home/frodo/imn", "PNG");
+    //ui->label_2->setPixmap( QPixmap::fromImage(*nm).scaled( ui->label_2->width(), ui->label_2->height(), Qt::KeepAspectRatio));
 
     // crear otras imagenes
     CrearBarras( w,h, barras);
@@ -155,6 +162,7 @@ void VentanaPrincipal::CrearAjedrez( int w, int h, int barras ){
             }
         }
 
+    this->imagenSalida->append(ajedrez);
     ajedrez->save("/home/frodo/imnChess.png", "png");
 
 }
@@ -205,7 +213,35 @@ void VentanaPrincipal::CrearBarras(int w, int h, int barras){
 
     // salvar la imagen de las barras
     barra->save("/home/frodo/imnBarra.png", "png");
+    this->imagenSalida->append(barra);
+
+}
+
+void VentanaPrincipal::SigImagen(){
+
+    if( 0 <= this->indxGlobal && this->indxGlobal < this->imagenSalida->size() ){
 
 
+        QImage *act = this->imagenSalida->at(this->indxGlobal);
+        ui->label_2->setPixmap( QPixmap::fromImage(*act).scaled( ui->label_2->width(), ui->label_2->height(), Qt::KeepAspectRatio));
+        this->indxGlobal += 1;
 
+    }
+    else {
+        this->indxGlobal = 0;
+    }
+}
+
+void VentanaPrincipal::AntImagen(){
+
+    if( 0 <= this->indxGlobal  && this->indxGlobal < this->imagenSalida->size() ){
+
+        QImage *act = this->imagenSalida->at(this->indxGlobal);
+        ui->label_2->setPixmap( QPixmap::fromImage(*act).scaled( ui->label_2->width(), ui->label_2->height(), Qt::KeepAspectRatio));
+        this->indxGlobal -= 1;
+
+    }
+    else {
+        this->indxGlobal = 0;
+    }
 }

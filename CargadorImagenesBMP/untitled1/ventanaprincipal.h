@@ -13,6 +13,8 @@ class VentanaPrincipal : public QMainWindow
 
 public:
     explicit VentanaPrincipal(QWidget *parent = 0);
+    int                indxGlobal = 0;
+    QList  <QImage*> * imagenSalida ;
     ~VentanaPrincipal();
 
 private slots:
@@ -22,6 +24,8 @@ private slots:
     int     NuevaBlack();
     void    CrearAjedrez (int w, int h, int b);
     void    CrearBarras  (int w, int h, int b);
+    void    AntImagen();
+    void    SigImagen();
 
 private:
     Ui::VentanaPrincipal *ui;
