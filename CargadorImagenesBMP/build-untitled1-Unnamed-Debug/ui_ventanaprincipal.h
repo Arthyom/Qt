@@ -69,7 +69,8 @@ public:
         label = new QLabel(groupBox);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 130, 551, 481));
-        label->setStyleSheet(QString::fromUtf8("background-color: rgb(46, 52, 54);"));
+        label->setStyleSheet(QString::fromUtf8("background-color: rgb(46, 52, 54);\n"
+"border-color: rgb(0, 0, 0);"));
         label->setFrameShape(QFrame::Panel);
         pushButton_3 = new QPushButton(groupBox);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
@@ -108,6 +109,7 @@ public:
         label_2->setGeometry(QRect(10, 130, 551, 481));
         label_2->setStyleSheet(QString::fromUtf8("background-color: rgb(46, 52, 54);"));
         label_2->setFrameShape(QFrame::Box);
+        label_2->setIndent(-4);
         pushButton_4 = new QPushButton(groupBox_2);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
         pushButton_4->setGeometry(QRect(480, 40, 80, 81));
@@ -118,7 +120,8 @@ public:
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(0, 30, 571, 101));
         label_4->setAutoFillBackground(false);
-        label_4->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
+        label_4->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);\n"
+"border-color: rgb(0, 0, 0);"));
         label_4->raise();
         label_2->raise();
         pushButton_4->raise();
